@@ -49,6 +49,8 @@
     </dependencies>
 
     <build>
+        <finalName>dallas-app-api-java-0.0.1-SNAPSHOT</finalName>
+        <outputDirectory>target</outputDirectory>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
