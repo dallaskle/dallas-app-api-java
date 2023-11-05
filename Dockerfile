@@ -1,5 +1,5 @@
 FROM maven:3.8.4-amazoncorretto-17 AS build
-COPY ..
+COPY . .
 RUN mvn clean package -DskipTests
 
 FROM amazoncorretto:17.0.4
