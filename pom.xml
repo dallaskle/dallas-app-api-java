@@ -5,7 +5,7 @@
 
     <groupId>com.mongodb</groupId>
     <artifactId>dallas-app-api-java</artifactId>
-    <version>1.0.0</version>
+    <version>0.0.1</version>
     <packaging>jar</packaging>
     <name>java-spring-boot-mongodb-starter</name>
 
