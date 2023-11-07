@@ -6,6 +6,7 @@ import com.mongodb.starter.expenses.repositories.ExpenseRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.UUID;
 
 @Component
 public class ExpenseService {
@@ -17,6 +18,10 @@ public class ExpenseService {
     }
 
     public void saveExpense(Expense expense) {
+        if (expense.getId() == null) {
+            UUID uuid = UUID.randomUUID();
+            expense.setId(uuid.toString());
+        }
         expenseRepository.save(expense);
     }
 
