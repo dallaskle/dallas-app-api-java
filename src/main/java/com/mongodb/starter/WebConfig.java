@@ -17,5 +17,11 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedHeaders("*") // specify the allowed headers
                 .allowCredentials(true) // specify if you want to allow credentials
                 .maxAge(3600); // specify the max age of the CORS configuration
+        registry.addMapping("/**")
+                .allowedOrigins("http://localhost:3000") // specify the allowed origin
+                .allowedMethods("GET", "POST", "PUT", "DELETE") // specify the allowed HTTP methods
+                .allowedHeaders("*") // specify the allowed headers
+                .allowCredentials(true) // specify if you want to allow credentials
+                .maxAge(3600); // specify the max age of the CORS configuration
     }
 }

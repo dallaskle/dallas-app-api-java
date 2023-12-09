@@ -18,7 +18,9 @@ public class ExpenseService {
     }
 
     public void saveExpense(Expense expense) {
-        if (expense.getId() == null) {
+        System.out.println(expense);
+        System.out.println(expense.getId());
+        if (expense.getId() == null || expense.getId() == "") {
             UUID uuid = UUID.randomUUID();
             expense.setId(uuid.toString());
         }
