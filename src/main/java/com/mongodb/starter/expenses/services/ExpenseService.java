@@ -3,6 +3,7 @@ package com.mongodb.starter.expenses.services;
 import com.mongodb.starter.example.dtos.PersonDTO;
 import com.mongodb.starter.expenses.models.Expense;
 import com.mongodb.starter.expenses.repositories.ExpenseRepository;
+import org.bson.Document;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -25,6 +26,14 @@ public class ExpenseService {
             expense.setId(uuid.toString());
         }
         expenseRepository.save(expense);
+    }
+
+    public void saveDoc(Document doc) {
+        expenseRepository.save(doc);
+    }
+
+    public void deleteDocs() {
+        expenseRepository.deleteAll();
     }
 
     public List<Expense> getExpenses() { return expenseRepository.findAll();}

@@ -9,6 +9,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.FindOneAndReplaceOptions;
 import com.mongodb.starter.expenses.models.Expense;
 import jakarta.annotation.PostConstruct;
+import org.bson.Document;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class MongoDBExpenseRepository implements ExpenseRepository {
             .build();
     private final MongoClient client;
     private MongoCollection<Expense> expenseCollection;
+    private MongoCollection<Document> docExpenseCollection;
 
     public MongoDBExpenseRepository(MongoClient mongoClient) {
         this.client = mongoClient;
@@ -35,12 +37,23 @@ public class MongoDBExpenseRepository implements ExpenseRepository {
     @PostConstruct
     void init() {
         expenseCollection = client.getDatabase("budget").getCollection("expenses", Expense.class);
+        docExpenseCollection = client.getDatabase("budget").getCollection("expenses", Document.class);
     }
 
     @Override
     public Expense save(Expense expense) {
         expenseCollection.insertOne(expense);
         return expense;
+    }
+
+    @Override
+    public void save(Document doc) {
+        docExpenseCollection.insertOne(doc);
+    }
+
+    @Override
+    public void deleteAll() {
+        docExpenseCollection.deleteMany(new Document());
     }
 
     @Override
